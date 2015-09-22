@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/rob-nash/RRNCollapsableSectionTableViewSwift.svg)](https://travis-ci.org/rob-nash/RRNCollapsableSectionTableViewSwift)
 
 ![](http://i.imgur.com/jDq37Ip.gif?1)
 ![](http://i.imgur.com/77YQhPE.gif?1)
