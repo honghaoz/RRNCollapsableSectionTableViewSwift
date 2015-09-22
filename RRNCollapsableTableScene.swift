@@ -47,16 +47,12 @@ class RRNCollapsableTableViewController: UIViewController {
 extension RRNCollapsableTableViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let count = (self.model() ?? []).count
-        return count
+        return (self.model() ?? []).count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let menuSection = self.model()?[section]
-        if (menuSection?.isVisible ?? false) {
-            return menuSection!.items.count
-        }
-        return 0
+        return (menuSection?.isVisible ?? false) ? menuSection!.items.count : 0
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
