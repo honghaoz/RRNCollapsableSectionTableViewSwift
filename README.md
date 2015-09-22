@@ -3,7 +3,7 @@
 ![](http://i.imgur.com/77YQhPE.gif?1)
 
 ## Requirements
-XCode 6.4+, iOS 8.1+
+XCode 7.0+, iOS 8.1+
 
 ## Installation
 In XCode, select 'Add Files To Project', and select the following
@@ -18,7 +18,7 @@ In XCode, select 'Add Files To Project', and select the following
 	* override 'model' and return a pointer to an array of objects, which conform to RRNCollapsableSectionItem Protocol.
 	* override 'sectionHeaderNibName' and return the filename of the nib you created in step 2.
 
-See the 'Example' project for a demonstration.
+See the 'Example-Swift' project for a demonstration.
 
 ## License
 RRNCollapsableSectionTableViewSwift is released under the MIT license. See 'LICENSE' for details.
