@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RRNCollapsableTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RRNCollapsableSectionHeaderReactiveProtocol {
+class RRNCollapsableTableViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,17 +42,19 @@ class RRNCollapsableTableViewController: UIViewController, UITableViewDataSource
     func sectionHeaderReuseIdentifier() -> String? {
         return self.sectionHeaderNibName()?.stringByAppendingString("ID")
     }
-    
-    //MARK: TableView
+}
+
+extension RRNCollapsableTableViewController: UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return (self.model() ?? []).count
+        let count = (self.model() ?? []).count
+        return count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let menuSection = self.model()?[section]
         if (menuSection?.isVisible ?? false) {
-            return (menuSection?.items.count ?? 0)
+            return menuSection!.items.count
         }
         return 0
     }
@@ -74,6 +76,13 @@ class RRNCollapsableTableViewController: UIViewController, UITableViewDataSource
         return view as? UIView
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+extension RRNCollapsableTableViewController: UITableViewDelegate {
+    
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         
         if let view = view as? RRNCollapsableSectionHeaderProtocol {
@@ -85,12 +94,9 @@ class RRNCollapsableTableViewController: UIViewController, UITableViewDataSource
             }
         }
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
-    }
-    
-    //MARK: Reactive Protocol
+}
+
+extension RRNCollapsableTableViewController: RRNCollapsableSectionHeaderReactiveProtocol {
     
     func userTapped(view: RRNCollapsableSectionHeaderProtocol) {
         
